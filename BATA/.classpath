@@ -13,5 +13,15 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="D:/Softwares/Database/Mysql/mysql-connector-java-5.1.13/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/commons-fileupload-1.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/cos_source_from_jdcore.zip"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/jxl.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/poi-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/poi-ooxml-3.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/poi-ooxml-schemas-4.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/xmlbeans-3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vkumbhar/Desktop/ALL/Project/requiredjar/traprange.lastest.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
