@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background: #f1f1f1!important;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.container{
+	padding-top: 30px;
+	padding-left: 208px;
+	
+}
+form {
+	width:80%;
+	border: 0px solid;
+	padding: 14px;
+	background: white;
+	text-align: center;
+	padding-bottom: 75px;
+border-radius: 84px 19px 84px 19px;
+-moz-border-radius: 84px 19px 84px 19px;
+-webkit-border-radius: 84px 19px 84px 19px;
+border: 0px solid #000000;}
+form .img{
+	text-align: center;
+	height: 20px;
+	width: 20px;
+	padding-top: 10px;
+}
+.form-title {
+    font-family: JosefinSans-Bold;
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #57b846;
+    padding-top: 50px;
+    padding-bottom: 39px;
+}
+input[type=text],input[type=password] {
+    width: 100%;
+    padding: 17px 20px;
+    margin: 3px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    
+}
+select{
+	 width: 30%;
+    padding: 21px 21px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	
+}
+
+input[type=submit] {
+    width: 25%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+button {
+	width: 25%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+	
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+/*------------------------------------------------------------Responsive*/
+
+
+/*------------------------------------------------------------------
+[ Responsive ]*/
+
+
+
+@media (max-width: 992px) {
+  .col-md-6 {
+    padding: 177px 90px 33px 85px;
+  }
+
+  form .img {
+    display: none;
+  }
+
+  form {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-md-6 {
+    padding: 100px 80px 33px 80px;
+  }
+
+  form .img {
+    display: none;
+  }
+
+ form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-md-6 {
+    padding: 100px 15px 33px 15px;
+  }
+   form .img {
+    display: none;
+  }
+  form {
+    width: 100%;
+  }
+}
+
+
