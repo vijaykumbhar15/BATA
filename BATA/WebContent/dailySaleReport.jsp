@@ -104,7 +104,8 @@ function setDate(){
     </div> -->
     
     <div class="form-group col-xs-4">
-    	<select class="form-control" name="lyTurnover" required>
+    	<input type="text" class="form-control" id="lyTurnover" placeholder="Turnover LY" name="lyTurnover" required>
+    	<%-- <select class="form-control" name="lyTurnover" required>
 			<option value="0">--Select LY Turnover--</option>
 			<%
 				try
@@ -133,7 +134,7 @@ function setDate(){
 				}
 				
 			%>
-		</select>    
+		</select>    --%> 
 	</div>
     
     <!-- <div class="form-group col-xs-4">
@@ -141,7 +142,8 @@ function setDate(){
     </div> -->
     
     <div class="form-group col-xs-4">
-    	<select class="form-control" name="estTurnover" required>
+    	<input type="text" class="form-control" id="estTurnover" placeholder="Turnover EST" name="estTurnover" required>
+    	<%-- <select class="form-control" name="estTurnover" required>
 			<option value="0">--Select EST Turnover--</option>
 			<%
 				try
@@ -169,7 +171,7 @@ function setDate(){
 				}
 				
 			%>
-		</select>    
+		</select>     --%>
 	</div>
     
     
