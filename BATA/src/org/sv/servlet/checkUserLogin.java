@@ -33,12 +33,11 @@ public class checkUserLogin extends HttpServlet {
 		userName=request.getParameter("userID");
 		password=request.getParameter("password");
 		
-		Connection conn = DBConnection.getConnection();
-		
 		int check=0;
-		Statement stmt;
-		try {
-			stmt = conn.createStatement();
+		
+		try(Connection conn = DBConnection.getConnection();Statement stmt = conn.createStatement();)
+		{
+			
 			//ResultSet rs=stmt.executeQuery("select * from userMaster");
 			ResultSet rs=stmt.executeQuery("select * from usermaster join employeemaster where usermaster.userID = employeemaster.empID AND userID="+userName);
 			//ResultSet rs=stmt.executeQuery("select * from employeemaster");
@@ -59,6 +58,8 @@ public class checkUserLogin extends HttpServlet {
 				out.print("Fail");
 			}
 			conn.close();
+			rs.close();
+			stmt.close();
 		}
 		catch(Exception e)
 		{

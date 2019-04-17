@@ -43,8 +43,8 @@ public class ChangePassword extends HttpServlet {
 		
 		System.out.println("User Name in the change password = "+userName);
 		
-		try {
-			
+		try 
+		{
 			pstm1 = con.prepareStatement("SELECT * FROM usermaster where userId = ?");
 			pstm1.setString(1, userName);
 			ResultSet rs = pstm1.executeQuery();
@@ -64,13 +64,14 @@ public class ChangePassword extends HttpServlet {
 					pstm2.execute();
 					check=1;
 					System.out.println("Passsword Has been changed.!!!");
-					
+					pstm2.close();
 				}
 				else
 				{
 					session.setAttribute("resultOldPassword", "OLD password is INCORRECT");
 					
 				}
+				
 			}
 			
 			if(check == 1)
@@ -82,6 +83,9 @@ public class ChangePassword extends HttpServlet {
 				response.sendRedirect("changePassword.jsp");
 			}
 			con.close();
+			pstm1.close();
+			rs.close();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

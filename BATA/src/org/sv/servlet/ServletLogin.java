@@ -34,7 +34,7 @@ public class ServletLogin extends HttpServlet {
 		String userID = request.getParameter("userName");
 		
 		
-Connection conn = DBConnection.getConnection();
+		Connection conn = DBConnection.getConnection();
 		
 		int check=0;
 		Statement stmt;
@@ -51,6 +51,8 @@ Connection conn = DBConnection.getConnection();
 			System.out.println("isValid condition = "+isValid);
 			map.put("isValid", isValid);
 			conn.close();
+			stmt.close();
+			rs.close();
 		//	write(response,map);
 		}
 		catch(Exception e)

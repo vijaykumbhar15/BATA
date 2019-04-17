@@ -70,6 +70,9 @@
 							
 					<%
 					}
+						stmt.close();
+						con.close();
+						rs.close();
 					%>
 					<button type="submit">Update</button><br><br>
 					<a href="showStoreDetails.jsp">Back</a>
@@ -88,6 +91,7 @@ if(ID!=null && storeName!=null)
 	pstmt=con.prepareStatement(query1);
 	pstmt.setString(1,storeName);
 	pstmt.executeUpdate();
+	pstmt.close();
 	response.sendRedirect("showDistrictManagerForm.jsp");
 }
 

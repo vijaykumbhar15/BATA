@@ -54,6 +54,7 @@
 						<%
 					}
 					con.close();
+					stmt.close();
 					rs.close();
 				}
 				catch(Exception e)
@@ -72,11 +73,18 @@
 			System.out.println("SELECT weekNo FROM dsrcalendar where dateMatch='"+todayDate+"'");
 			ResultSet rs2 = stmt.executeQuery("SELECT weekNo FROM dsrcalendar where dateMatch='"+todayDate+"'");
 			rs2.next();
+			
 		
 		%>
 		
 		<div class="form-group col-xs-4">
       <input type="text" class="form-control" id="week" name="week" value="<%=rs2.getString("weekNo")%>" required>
+      
+      <%
+      	rs2.close();
+      con.close();
+      stmt.close();
+      %>
     </div>
 		    <div class="form-group col-xs-4">
       <input type="text" class="form-control" id="lyPairs" placeholder="Pairs LY" name="lyPairs" required>

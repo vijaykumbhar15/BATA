@@ -45,6 +45,8 @@
 						String storeID=request.getParameter("storeID");
 						String query="DELETE FROM storemaster where storeid='"+storeID+"'";
 						stmt.execute(query);
+						con.close();
+						stmt.close();
 					response.sendRedirect("showStoreDetails.jsp");
 					
 					%>	

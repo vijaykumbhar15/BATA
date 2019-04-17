@@ -92,6 +92,9 @@
 				
 				<%
 			}
+			con.close();
+			stmt.close();
+			rs.close();
 			%>
 			
 		</tbody>

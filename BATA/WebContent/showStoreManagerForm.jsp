@@ -35,9 +35,12 @@
 	<form action="">
 	<%
 			System.out.println("Designation in Store Manager form ="+session.getAttribute("designation"));		
-			if(session.getAttribute("userName")==null || !(session.getAttribute("designation").equals("Store_Manager"))) 
+			if(session.getAttribute("designation")==null || session.getAttribute("userName")==null || !(session.getAttribute("designation").equals("Store_Manager"))) 
 			{
+				System.out.println("In if loop User Name = "+session.getAttribute("userName")+" Designation = "+session.getAttribute("designation"));
+				
 				response.sendRedirect("login.jsp");
+				
 			}
 			response.setHeader("Cache-Control", "no-cahce,no-store,must-revalidate"); 
 			response.setHeader("Pragma", "no-cahce");
@@ -85,19 +88,7 @@
 	<div class="col-sm-6">
 		
 		<%
-			/* Connection con2 = DBConnection.getConnection();
-			String todayDate = TodayDate.getDateYMD();
-			Statement stmt2 = con2.createStatement(); 
-			Statement stmt3 = con2.createStatement(); 
 			
-			System.out.println("SELECT storeID from storemaster where SM_ID='"+session.getAttribute("userID")+"'");
-			ResultSet rs3 = stmt3.executeQuery("SELECT storeID from storemaster where SM_ID='"+session.getAttribute("userID")+"'");
-			
-			System.out.println("SELECT weekNo FROM dsrcalendar where dateMatch='"+todayDate+"'");
-			ResultSet rs2 = stmt2.executeQuery("SELECT weekNo FROM dsrcalendar where dateMatch='"+todayDate+"'");
-			
-			rs3.next();
-			 */
 			Statement stmt2 = con2.createStatement(); 
 			System.out.println("SELECT weekNo FROM dsrcalendar where dateMatch='"+todayDate+"'");
 			ResultSet rs2 = stmt2.executeQuery("SELECT weekNo FROM dsrcalendar where dateMatch='"+todayDate+"'");
@@ -115,10 +106,18 @@
 				<button type="button" class="btn btn-default btn-wide" onClick="window.location='projectionEntry.jsp';">Projection Entry</button>
 				<%
 			}
+			stmt2.close();
+			stmt3.close();
+			stmt4.close();
 			con2.close();
+			rs2.close();
+			rs3.close();
+			rs4.close();
+			rs5.close();
+			
 		%>
 		<button type="button" class="btn btn-default btn-wide" onClick="window.location='viewStoreManagerProjection.jsp';">View Projection</button>
-		<button type="button" class="btn btn-default btn-wide" onClick="window.location='cashtallyentry.jsp';">Cash Inventory</button>
+		<button type="button" class="btn btn-default btn-wide" onClick="window.location='rptsale.jsp';">Sale Report</button>
 	</div>
 	<br><br><br><br><br><br><br><br><br><br><br><br>
 	
@@ -151,6 +150,10 @@
 		balanceAgainstEstimates = totalEstimate - weeklyEstimate;
 		balanceAgainstProjection = totalProjection - weeklyAchievement;
 		
+		stmt.close();
+		stmt1.close();
+		rs.close();
+		rs1.close();
 		con.close();
 	%>
 	

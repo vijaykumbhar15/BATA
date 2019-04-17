@@ -39,6 +39,9 @@ public class ProjectionEntry extends HttpServlet {
 			ResultSet rs= stmt1.executeQuery("SELECT WeekNo FROM dsrcalendar WHERE dateMatch='"+TodayDate.getDateYMD()+"'");
 			rs.next();
 			weekNo= rs.getString("weekNo");
+			con1.close();
+			stmt1.close();
+			rs.close();
 			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -119,6 +122,8 @@ public class ProjectionEntry extends HttpServlet {
 			
 			response.getWriter().println("<h3>Projection details added in the DB</h3>");
 			con.close();
+			stmt.close();
+			
 			response.sendRedirect("showStoreManagerForm.jsp");
 			
 		} catch (SQLException e) {

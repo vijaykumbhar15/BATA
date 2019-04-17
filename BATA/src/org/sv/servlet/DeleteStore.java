@@ -22,22 +22,18 @@ import org.sv.dto.DBConnection;
 public class DeleteStore extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	Connection con=null;
-	Statement stmt=null;
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 						
-						con=DBConnection.getConnection();
-						try 
-						{
-							stmt=con.createStatement();
 						
+						try(Connection con=DBConnection.getConnection();Statement stmt=con.createStatement();)
+						{
 							String storeID=request.getParameter("storeID");
 							String query="DELETE * FROM storemaster where storeid='"+storeID+"'";
 						
 							stmt.execute(query);
 							con.close();
+							stmt.close();
 							
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block

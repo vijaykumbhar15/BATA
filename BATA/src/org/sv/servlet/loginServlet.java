@@ -101,7 +101,7 @@ public class loginServlet extends HttpServlet {
 			}
 			
 			session.setAttribute("designation", designation);
-			conn.close();
+			
 		if(designation.equals("District_Manager"))
 		{
 			page="showDistrictManagerForm.jsp";
@@ -120,6 +120,11 @@ public class loginServlet extends HttpServlet {
 			page="showAdminPage.jsp";
 		}
 		
+		
+		conn.close();
+		rs.close();
+		stmt.close();
+	
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.include(request, response);
 		

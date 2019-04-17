@@ -62,6 +62,7 @@
 					}
 					con.close();
 					rs.close();
+					stmt.close();
 				}
 				catch(Exception e)
 				{

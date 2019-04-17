@@ -263,6 +263,9 @@
 							<%
 							}
 						}
+						con.close();
+						rs.close();
+						stmt.close();
 						%>
 					</tr>
 					

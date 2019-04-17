@@ -31,14 +31,14 @@ public class ForgotPassword extends HttpServlet {
 		String newPassword = request.getParameter("newPassword");
 		String newConfirmPassword = request.getParameter("newConfirmPassword");
 		
-		Connection con = DBConnection.getConnection();
+		
 		
 		String sql= "select * from usermaster join employeemaster where usermaster.userID = employeemaster.empID AND userID=? AND employeemaster.birthDate=?";
 		
-		try 
+		try(Connection con = DBConnection.getConnection();)
 		{
-			PreparedStatement pstmt = con.prepareStatement(sql);
 			
+			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, employeeID);
 			pstmt.setString(2, birthDate);
 			
@@ -61,7 +61,8 @@ public class ForgotPassword extends HttpServlet {
 			{
 				System.out.println("Please check the Employeee ID OR Date of Birth");
 			}
-			con.close();	
+			rs.close();
+			pstmt.close();
 			response.sendRedirect("login.jsp");
 			
 			

@@ -50,7 +50,10 @@ public class downloadHoleWeekReport extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		finally {
+			
+			
+		}
 		HSSFWorkbook wb = new HSSFWorkbook();
 		HSSFSheet sheet1 = wb.createSheet("Monday Daily Sale Report");
 		HSSFSheet sheet2 = wb.createSheet("Tuesday Daily Sale Report");
@@ -154,6 +157,7 @@ public class downloadHoleWeekReport extends HttpServlet {
 					cell1.setCellValue(rs.getString("Impresso_Update"));
 					
 				}
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -249,6 +253,7 @@ public class downloadHoleWeekReport extends HttpServlet {
 							cell2.setCellValue(rs.getString("Impresso_Update"));
 							
 						}
+						
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -824,11 +829,25 @@ public class downloadHoleWeekReport extends HttpServlet {
 							cellWeek.setCellValue(rs.getString("Impresso_Update"));
 							
 						}
-						con.close();
+						
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+				}
+				finally 
+				{
+					try 
+					{
+						con.close();
+						pstm.close();
+						rs.close();	
+					} 
+					catch (SQLException e) 
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
+				}
 				
 				
 				// write it as an excel attachment
@@ -848,6 +867,7 @@ public class downloadHoleWeekReport extends HttpServlet {
 				
 			//	response.sendRedirect("download_excel.jsp");
 		
+				
 		
 	}
 

@@ -36,12 +36,10 @@ public class addStore extends HttpServlet {
 		SM_ID=request.getParameter("cmbSM_ID");
 		
 		int checkEmpID=0;
-		Connection conn=DBConnection.getConnection();
 		
-		try 
+		
+		try(Connection conn=DBConnection.getConnection();Statement stmt=conn.createStatement();)
 		{			
-			Statement stmt=conn.createStatement();
-			
 			String SQL="select storeID from storemaster";
 			
 			ResultSet rs=stmt.executeQuery(SQL);
@@ -52,21 +50,25 @@ public class addStore extends HttpServlet {
 				{
 					checkEmpID=1;
 				}
-			
-				
 			}
+			
+			rs.close();
 			
 			if(checkEmpID==0)
 			{
 			
-				Statement stmt1=conn.createStatement();
+				try(Statement stmt1=conn.createStatement();)
+				{
+					stmt1.executeUpdate("insert into storemaster (storeID,storename,stateID,distID,SM_ID) values('"+storeID+"','"+storeName+"','"+stateID+"','"+distID+"','"+SM_ID+"')");
 			
-				stmt1.executeUpdate("insert into storemaster (storeID,storename,stateID,distID,SM_ID) values('"+storeID+"','"+storeName+"','"+stateID+"','"+distID+"','"+SM_ID+"')");
-			
-				response.getWriter().println("<h3>Stoare added Successfully in the DB</h3>");
-			
-				conn.close();
-				response.sendRedirect("showDistrictManagerForm.jsp");
+					response.getWriter().println("<h3>Stoare added Successfully in the DB</h3>");
+					
+					response.sendRedirect("showDistrictManagerForm.jsp");
+				}
+				catch(Exception e)
+				{
+					System.out.println(e);
+				}
 			}
 			else
 			{

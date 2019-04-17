@@ -184,6 +184,12 @@
 						<td><%=rs.getString("weekEST") %></td>
 						<td><%=rs.getString("weekPROJ") %></td>
 						<td><%=0 %></td>
+						
+						<%
+							con.close();
+							rs.close();
+							stmt.close();
+						%>
 					</tr>
 				</tbody>
 			</table>

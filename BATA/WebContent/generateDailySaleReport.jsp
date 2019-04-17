@@ -225,6 +225,7 @@
 						response.setHeader("Content-Disposition", "inline; filename=DailySaleReport_"+Date+".xls");
 					
 						con.close();
+						stmt.close();
 						rs.close();
 					}
 					else

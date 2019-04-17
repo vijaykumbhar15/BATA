@@ -52,12 +52,13 @@ public class dailySaleReport extends HttpServlet {
 		fulfilled=request.getParameter("fulfilled");
 		rpu=request.getParameter("rpu");
 		
-		Connection conn=DBConnection.getConnection();
+		
 		int checkEmpID=0;
-		try 
-		{			
-			Statement stmt=conn.createStatement();
-			
+		try(Connection conn=DBConnection.getConnection();
+				Statement stmt=conn.createStatement();
+				Statement stmt1=conn.createStatement();
+				Statement stmt2=conn.createStatement();)
+		{	
 			String SQL="select storeID_Date from dailysalereport";
 			
 			ResultSet rs=stmt.executeQuery(SQL);
@@ -72,8 +73,6 @@ public class dailySaleReport extends HttpServlet {
 			
 			if(checkEmpID==0)
 			{
-				Statement stmt1=conn.createStatement();
-				Statement stmt2=conn.createStatement();
 				System.out.println("SELECT * FROM dsrcalendar WHERE dateMatch='"+datetime+"'");
 				ResultSet rs2= stmt2.executeQuery("SELECT * FROM dsrcalendar WHERE dateMatch='"+datetime+"'");
 				rs2.next();
@@ -88,6 +87,12 @@ public class dailySaleReport extends HttpServlet {
 				stmt1.executeUpdate("delete from projection_ly where value='"+lyTurnover+"' LIMIT 1");
 				stmt1.executeUpdate("delete from projection_est where value='"+estTurnover+"' LIMIT 1");
 				
+				conn.close();
+				rs.close();
+				stmt.close();
+				stmt1.close();
+				stmt2.close();
+				rs2.close();
 				response.sendRedirect("showStoreManagerForm.jsp");
 			}
 			else
@@ -95,7 +100,8 @@ public class dailySaleReport extends HttpServlet {
 				System.out.println("Record Already Exist");
 				response.sendRedirect("dailySaleReport.jsp");
 			}
-			conn.close();
+			
+			
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block

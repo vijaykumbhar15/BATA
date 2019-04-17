@@ -40,6 +40,7 @@
 						<%
 					}
 					con.close();
+					stmt.close();
 					rs.close();
 				}
 				catch(Exception e)
@@ -89,6 +90,7 @@
 					
 					}
 					con.close();
+					stmt.close();
 					rs.close();
 				}
 				catch(Exception e)

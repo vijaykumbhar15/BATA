@@ -38,12 +38,9 @@ public class createNewEmployee extends HttpServlet {
 		System.out.println(designation);
 		
 		//Geeeting connection object from DBConnection class
-		Connection con=DBConnection.getConnection();
-		
-		try 
+				
+		try(Connection con=DBConnection.getConnection();Statement stmt=con.createStatement();) 
 		{			
-			Statement stmt=con.createStatement();
-			
 			System.out.println("Employee ID = "+empID);
 			
 			if(checkEmpID(empID))
@@ -59,6 +56,8 @@ public class createNewEmployee extends HttpServlet {
 				System.out.println("Employee Alredy Exist");
 			}
 			con.close();
+			stmt.close();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,11 +69,9 @@ public class createNewEmployee extends HttpServlet {
 	boolean checkEmpID(String empID)
 	{
 		int i=0;
-		Connection con=DBConnection.getConnection();
-		Statement stmt;
-		try 
+		
+		try(Connection con=DBConnection.getConnection();Statement stmt = con.createStatement();) 
 		{
-			stmt = con.createStatement();
 			ResultSet rs;
 			rs = stmt.executeQuery("SELECT empID FROM employeemaster");
 			while(rs.next())
@@ -84,7 +81,9 @@ public class createNewEmployee extends HttpServlet {
 						i=1;
 					}
 			}
-			
+			rs.close();
+			stmt.close();
+			con.close();
 		}
 		catch (SQLException e) {
 		// TODO Auto-generated catch block

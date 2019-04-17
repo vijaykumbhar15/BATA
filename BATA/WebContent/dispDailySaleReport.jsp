@@ -254,15 +254,20 @@
 						</tbody>
 						<%
 							}
+							rs1.close();
+							stmt1.close();
+					
 						}
 						con.close();
 						rs.close();
+						stmt.close();
+						
 						}
 						else
 						{
 							
 						}
-				
+					
 				}
 				catch(Exception e)
 				{

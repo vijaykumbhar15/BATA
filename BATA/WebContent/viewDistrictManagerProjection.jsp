@@ -277,6 +277,8 @@
 						<td><%=storeWeekActTotal %></td>
 						
 						<%
+					
+						
 							}
 							else
 							{
@@ -332,7 +334,18 @@
 								
 						<%
 							}
+							rs1.close();
+							rs2.close();
+							stmt1.close();
+							stmt2.close();
+							con1.close();
 						}
+						rs.close();
+						
+						stmt.close();
+						
+						con.close();
+						
 						%>
 					</tr>
 					<tfoot style="font-weight: bold;">

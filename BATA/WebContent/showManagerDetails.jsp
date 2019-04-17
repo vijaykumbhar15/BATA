@@ -48,7 +48,6 @@
 			<%
 			Statement stmt=null;
 			ResultSet rs;
-			PreparedStatement pstmt=null;		
 			Connection con=DBConnection.getConnection();
 			stmt=con.createStatement();
 			String query="SELECT * FROM employeemaster where designation='Store_Manager'";
@@ -69,6 +68,9 @@
 				
 				<%
 			}
+			con.close();
+			stmt.close();
+			rs.close();
 			%>
 			
 		</tbody>

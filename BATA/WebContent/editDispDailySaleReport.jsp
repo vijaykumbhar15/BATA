@@ -117,6 +117,11 @@
 							
 					<%
 					}
+					con.close();
+					rs.close();
+					stmt.close();
+					
+					
 					%>
 					<button type="submit">Update</button><br><br>
 					<a href="dispDailySaleReport.jsp">Back</a>
@@ -179,6 +184,7 @@ if(storeId!=null && date!=null && LY_Pairs!=null && Pairs_EST!=null && Pairs_ACT
 	pstmt.setString(18,order_no);
 	pstmt.setString(19,fulfilled);	
 	pstmt.executeUpdate();
+	pstmt.close();
 	response.sendRedirect("dispDailySaleReport.jsp");
 }
 

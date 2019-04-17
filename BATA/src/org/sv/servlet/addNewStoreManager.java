@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +32,8 @@ public class addNewStoreManager extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String fName,lName,empID,password,designation,mobileNo,birthDate;
+		
+		String fName,lName,empID,password,designation,mobileNo,birthDate;
 		
 		fName=request.getParameter("fName");
 		lName=request.getParameter("lName");
@@ -44,12 +46,9 @@ public class addNewStoreManager extends HttpServlet {
 		System.out.println(designation);
 		int checkEmpID=0;
 		//Geeeting connection object from DBConnection class
-		Connection con=DBConnection.getConnection();
-		
-		try 
-		{			
-			Statement stmt=con.createStatement();
 			
+		try(Connection con=DBConnection.getConnection();Statement stmt=con.createStatement();) 
+		{			
 			String SQL="select empID from employeemaster";
 			
 			ResultSet rs=stmt.executeQuery(SQL);
@@ -60,8 +59,6 @@ public class addNewStoreManager extends HttpServlet {
 				{
 					checkEmpID=1;
 				}
-			
-				
 			}
 			
 			if(checkEmpID==0)
@@ -73,12 +70,9 @@ public class addNewStoreManager extends HttpServlet {
 				stmt.executeUpdate("insert into employeemaster values('"+empID+"','"+fName+"','"+lName+"','"+password+"','"+designation+"','"+mobileNo+"','"+birthDate+"')");
 				stmt.executeUpdate("insert into usermaster values('"+empID+"','"+empID+"','"+password+"')");
 				
-				
 				response.getWriter().println("<h3>Store Manager added Successfully in the DB</h3>");
-			
-				con.close();
+				rs.close();
 				response.sendRedirect("showDistrictManagerForm.jsp");
-				
 				
 			}
 			else
@@ -90,6 +84,9 @@ public class addNewStoreManager extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		finally {
+			
 		}
 	}
 

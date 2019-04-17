@@ -67,6 +67,10 @@
   					
 							<%
 						}
+						con.close();
+						stmt.close();
+						pstmt.close();
+						rs.close();
 						%>
 						<button type="submit">Update</button><br><br>
 						<a href="showDistrictManagerForm.jsp">Back</a>

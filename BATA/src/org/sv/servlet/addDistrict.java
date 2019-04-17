@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,20 +32,18 @@ public class addDistrict extends HttpServlet {
 		stateID=request.getParameter("stateID");
 		DM_ID=request.getParameter("cmbDM_ID");
 		
-		Connection conn=DBConnection.getConnection();
-		
-		try 
+		try(Connection conn=DBConnection.getConnection();Statement stmt=conn.createStatement();) 
 		{			
-			Statement stmt=conn.createStatement();
-			
 			stmt.executeUpdate("insert into districtmaster (districtID,districtName,stateID,DM_ID) values('"+distID+"','"+distName+"','"+stateID+"','"+DM_ID+"')");
 			
 			response.getWriter().println("<h3>District added Successfully in the DB</h3>");
 			
 			System.out.println("District added in the Database");
 			
-			conn.close();
-			response.sendRedirect("showRegionalManagerForm.jsp");
+			
+			RequestDispatcher rsd = request.getRequestDispatcher("showRegionalManagerForm.jsp");
+			rsd.forward(request, response);
+			//response.sendRedirect("showRegionalManagerForm.jsp");
 			
 			
 			
@@ -52,6 +51,10 @@ public class addDistrict extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		finally {
+			System.out.println("In finally");
+		}
+	
 		
 		
 	}

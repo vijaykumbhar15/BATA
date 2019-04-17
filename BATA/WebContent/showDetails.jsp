@@ -47,6 +47,7 @@
 						<%
 					}
 					con.close();
+					stmt.close();
 					rs.close();
 				}
 				catch(Exception e)
@@ -100,6 +101,7 @@
 						System.out.println("After While loop");
 					}
 					con.close();
+					stmt.close();
 					rs.close();
 				}
 				catch(Exception e)

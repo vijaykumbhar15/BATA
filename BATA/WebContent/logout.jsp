@@ -9,10 +9,10 @@
 <body>
 
 <%
-session.removeAttribute("userName");
-session.invalidate();
-
-response.sendRedirect("login.jsp");
+	session.removeAttribute("userName");
+	session.invalidate();
+	
+	response.sendRedirect("login.jsp");
 %>
 
 </body>

@@ -182,6 +182,7 @@
 						response.setHeader("Content-Disposition", "inline; filename=WeeklySaleReport_"+weekNo+".xls");
 					
 						con.close();
+						stmt.close();
 						rs.close();
 					}
 					else

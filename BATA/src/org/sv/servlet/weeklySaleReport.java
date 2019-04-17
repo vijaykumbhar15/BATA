@@ -77,6 +77,9 @@ public class weeklySaleReport extends HttpServlet {
 				
 				response.getWriter().println("Weekly sale Report Successfully in the DB");
 				conn.close();
+				stmt.close();
+				stmt1.close();
+				rs.close();
 				response.sendRedirect("showStoreManagerForm.jsp");
 			/*}
 			else

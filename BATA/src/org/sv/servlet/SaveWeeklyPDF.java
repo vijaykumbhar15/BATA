@@ -207,6 +207,8 @@ public class SaveWeeklyPDF extends HttpServlet {
     		*/
     		try {
 				conn.close();
+				stmt.close();
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

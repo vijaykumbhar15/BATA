@@ -52,6 +52,8 @@ public class registerNewUser extends HttpServlet {
 						response.getWriter().println("<h4>User Created "+userName+"</h4>");
 					}
 				}
+				rs.close();
+				stmt.close();
 			conn.close();	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

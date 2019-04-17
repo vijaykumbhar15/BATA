@@ -69,7 +69,6 @@
 			<%
 			Statement stmt=null;
 			ResultSet rs;
-			PreparedStatement pstmt=null;		
 			Connection con=DBConnection.getConnection();
 			stmt=con.createStatement();
 			//String query="SELECT * FROM myfirstappdb.storemaster";
@@ -96,6 +95,11 @@
 				
 				<%
 			}
+			con.close();
+			stmt.close();
+			rs.close();
+			
+			
 			%>
 			
 		</tbody>

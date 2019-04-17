@@ -31,17 +31,12 @@ public class addRegion extends HttpServlet {
 		stateID=request.getParameter("stateID");
 		RM_ID=request.getParameter("cmbRM_ID");
 		
-		Connection conn=DBConnection.getConnection();
-		
-		try 
+		try(Connection conn=DBConnection.getConnection();Statement stmt=conn.createStatement();) 
 		{			
-			Statement stmt=conn.createStatement();
-			
 			stmt.executeUpdate("insert into regionmaster (regionID,regionName,regionState_ID,RM_ID) values('"+regionID+"','"+regionName+"','"+stateID+"','"+RM_ID+"')");
 			
 			response.getWriter().println("<h3>Region added Successfully in the DB</h3>");
 			
-			conn.close();
 			response.sendRedirect("index.jsp");
 			
 		} catch (SQLException e) {
